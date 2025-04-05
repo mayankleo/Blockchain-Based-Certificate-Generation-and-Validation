@@ -1,0 +1,21 @@
+# Node.js
+node_modules/
+package-lock.json
+*.db
+
+# Build directories
+dist/
+build/
+
+# Environment variables
+# .env
+
+# IDEs and editors
+.vscode/
+
+# Hardhat files
+cache/
+artifacts/
+
+# Hardhat Ignition default folder for deployments against a local node
+ignition/deployments/chain-31337
