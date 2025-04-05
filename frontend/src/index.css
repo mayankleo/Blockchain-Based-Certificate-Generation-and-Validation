@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+body {
+  margin: 0;
+  background-color: #242424;
+  color: #ffffff;
+}
+
+button{
+  border: 1px solid #ffffff;
+  background-color: #565656;
+  margin: 1rem;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+input{
+  border: 1px solid #fff677;
+  background-color: #242424;
+  margin: 1rem;
+  padding: 0.5rem;
+  color: #ffffff;
+  border-radius: 0.5rem;
+}
