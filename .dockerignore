@@ -1,0 +1,21 @@
+**/.dockerignore
+# **/.env
+**/.git
+**/.gitignore
+**/.vs
+**/.vscode
+**/.cache
+**/docker-compose*
+**/compose.y*ml
+**/Dockerfile*
+**/node_modules
+**/build
+**/dist
+LICENSE
+README.md
+
+**/package-lock.json
+**/artifacts
+**/cache
+**/ignition/deployments/chain-31337
+**/*.db
