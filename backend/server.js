@@ -3,6 +3,7 @@ const cors = require('cors');
 const { insertUser, getUser, getSuperUser, getAllInstitute } = require("./db");
 require('dotenv').config();
 const path = require('path');
+const fs = require('fs');
 
 const app = express();
 
@@ -14,7 +15,25 @@ app.get('/', (req, res) => {
 });
 
 app.get('/getABI', (req, res) => {
-    res.sendFile(path.join(__dirname, process.env.CONTRACT_ABI_PATH));
+    const artifactPath = path.join(__dirname, process.env.CONTRACT_ABI_PATH);
+
+    fs.readFile(artifactPath, 'utf8', (err, data) => {
+        if (err) {
+            console.error("Error reading artifact file:", err);
+            return res.status(500).json({ message: "Error reading contract artifact" });
+        }
+        try {
+            const artifact = JSON.parse(data);
+            if (!artifact.abi) {
+                console.error("ABI not found in artifact file:", artifactPath);
+                return res.status(500).json({ message: "ABI not found in contract artifact" });
+            }
+            res.json(artifact.abi);
+        } catch (parseErr) {
+            console.error("Error parsing artifact file:", parseErr);
+            res.status(500).json({ message: "Error parsing contract artifact" });
+        }
+    });
 });
 
 app.get('/getContractAddress', (req, res) => {
